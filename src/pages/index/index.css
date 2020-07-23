@@ -1,0 +1,13 @@
+.aaa {
+  background: red;
+  color: #fff;
+  font-size: 14px;
+}
+
+.aaa .bb {
+  background: green;
+}
+
+.aaa .cc {
+  font-size: 18px;
+}
