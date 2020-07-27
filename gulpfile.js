@@ -11,14 +11,24 @@ gulp.task('wxml', async()=> {
         .pipe(gulp.dest('build/'))
 })
 gulp.task('sass', async()=> {
-  await gulp.src('./src/**/*.scss')
+  await gulp.src('./src/pages/**/*.scss')
         .pipe(sass({
             outputStyle: 'expanded'
         }))
         .pipe(rename(function(path) {
             path.extname = '.wxss'
         }))
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('build/pages'))
+})
+gulp.task('sass2', async()=> {
+  await gulp.src('./src/app.scss')
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }))
+        .pipe(rename(function(path) {
+          path.extname = '.wxss'
+      }))
+      .pipe(gulp.dest('build'))
 })
 gulp.task('json', async()=> {
   await gulp.src('./src/**/*.json')
@@ -43,9 +53,10 @@ gulp.task('image', async()=> {
 })
 
 
-gulp.task('default',gulp.series('wxml', 'sass', 'json', 'js', "image",() => {
+gulp.task('default',gulp.series('wxml', 'sass','sass2', 'json', 'js', "image",() => {
   gulp.watch('./src/**/*.wxml', gulp.series('wxml'))
     gulp.watch('./src/**/*.scss', gulp.series('sass'))
+    gulp.watch('./src/app.scss', gulp.series('sass2'))
     gulp.watch('./src/**/*.json', gulp.series('json'))
     gulp.watch('./src/**/*.js', gulp.series('js'))
     gulp.watch('./src/**/*.{png,jpg,gif,ico}',gulp.series('image'))

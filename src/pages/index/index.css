@@ -1,5 +1,6 @@
+@import "../../styles/color.scss";
 .aaa {
-  background: red;
+  background: $red;
   color: #fff;
   font-size: 14px;
 }

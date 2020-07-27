@@ -1,9 +1,11 @@
+@import "../../styles/color.scss";
 .aaa{
   background:red;
   color:#fff;
   font-size: 14px;
   .bb{
     background:green;
+    color:$yellow;
   }
   .cc{
     font-size: 18px;
