@@ -14,15 +14,20 @@ gulp.task('wxss', async()=> {
   await gulp.src('./src/**/*.wxss')
         .pipe(gulp.dest('build'))
 })
-gulp.task('sass', async()=> {
-  await gulp.src('./src/pages/**/*.scss')
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }))
-        .pipe(rename(function(path) {
-            path.extname = '.wxss'
-        }))
-        .pipe(gulp.dest('build/pages'))
+gulp.task('sass', async () => {
+	await gulp
+		.src('./src/**/*.scss')
+		.pipe(
+			sass({
+				outputStyle: 'expanded',
+			})
+		)
+		.pipe(
+			rename(function (path) {
+				path.extname = '.wxss'
+			})
+		)
+		.pipe(gulp.dest('build'))
 })
 gulp.task('sass2', async()=> {
   await gulp.src('./src/app.scss')
